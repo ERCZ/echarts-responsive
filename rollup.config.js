@@ -1,5 +1,6 @@
 import dts from "rollup-plugin-dts";
 import typescript from '@rollup/plugin-typescript';
+import resolve from '@rollup/plugin-node-resolve';
 
 /**
  * @type {import('rollup').RollupOptions}
@@ -12,7 +13,10 @@ const config = [
                 file: 'lib/index.js',
                 name: 'ResponsiveECharts',
                 format: 'umd',
-                sourcemap: true
+                sourcemap: true,
+                globals: {
+
+                }
             },
             {
                 file: 'lib/index.esm.js',
@@ -20,7 +24,7 @@ const config = [
                 sourcemap: true
             }
         ],
-        plugins: [typescript()],
+        plugins: [typescript(), resolve()],
     },
     {
         input: 'src/index.ts',

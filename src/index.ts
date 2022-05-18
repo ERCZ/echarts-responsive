@@ -1,5 +1,5 @@
 import * as echart from 'echarts'
-import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 
 type objType = { [index: string]: unknown }
 
