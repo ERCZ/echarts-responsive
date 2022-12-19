@@ -1,7 +1,7 @@
 {
   "name": "echarts-responsive",
-  "version": "0.0.1",
-  "description": "Add rem to echarts",
+  "version": "0.1.0",
+  "description": "Add auto resize to echarts",
   "source": "src/index.ts",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",

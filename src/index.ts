@@ -4,8 +4,10 @@ import { cloneDeep } from 'lodash-es'
 type objType = { [index: string]: unknown }
 
 export default class ResponsiveECharts {
-    static minPx = 12
-    static basePx = 12
+    static minFontSize = 12
+    static baseFontSize = 12
+    static minLineSize = 1
+    static baseLineSize = 1
     static baseWidth = 1920
     static resizeAnimation = { duration: 2 }
     private chart: echart.ECharts
@@ -52,8 +54,14 @@ export default class ResponsiveECharts {
     }
 
     private transformRem(str: string) {
-        if (!(/^\d+(.\d+)?rem$/.test(str))) return str
-        const i = parseFloat(str) * ResponsiveECharts.basePx * document.body.clientWidth / ResponsiveECharts.baseWidth
-        return i < ResponsiveECharts.minPx ? ResponsiveECharts.minPx : i
+        const result = /^\d+(.\d+)?(rfs|rls)$/.exec(str)
+        if (!result) return str
+        if (result[2] === 'rfs') {
+            const i = parseFloat(str) * ResponsiveECharts.baseFontSize * document.body.clientWidth / ResponsiveECharts.baseWidth
+            return i < ResponsiveECharts.minFontSize ? ResponsiveECharts.minFontSize : i
+        } else {
+            const i = parseFloat(str) * ResponsiveECharts.baseLineSize * document.body.clientWidth / ResponsiveECharts.baseWidth
+            return i < ResponsiveECharts.minLineSize ? ResponsiveECharts.minLineSize : i
+        }
     }
 }

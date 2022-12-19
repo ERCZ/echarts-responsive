@@ -4,8 +4,10 @@ declare type objType = {
     [index: string]: unknown;
 };
 declare class ResponsiveECharts {
-    static minPx: number;
-    static basePx: number;
+    static minFontSize: number;
+    static baseFontSize: number;
+    static minLineSize: number;
+    static baseLineSize: number;
     static baseWidth: number;
     static resizeAnimation: {
         duration: number;
